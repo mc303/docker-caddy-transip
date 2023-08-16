@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-export CADDY_VERSION=$(curl --silent ${DOCKER_API_URL} | grep -Po '"tag_name": "\K.*\d')
-
+DOCKER_USER_REPO=caddyserver/caddy
+DOCKER_API_URL=https://api.github.com/repos/${DOCKER_USER_REPO}/releases/latest 
+CADDY_VERSION=$(curl --silent ${DOCKER_API_URL} | grep -Po '"tag_name": "\K.*\d')
 DOCKER_REPO="ghcr.io/mc303/caddy-transip:latest"
 CONTAINER_NAME_TAG_VERSION="ghcr.io/mc303/caddy-transip:${CADDY_VERSION:1}"
 BUIILDX_REPO='build-caddy-transip'
 BUILD_PLATFORM="linux/amd64,linux/arm/v7,linux/arm64"
 
-DOCKER_USER_REPO=caddyserver/caddy
-DOCKER_API_URL=https://api.github.com/repos/${DOCKER_USER_REPO}/releases/latest 
+
 
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
