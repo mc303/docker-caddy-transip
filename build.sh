@@ -23,4 +23,4 @@ export CADDY_VERSION=$(curl --silent ${DOCKER_API_URL} | grep -Po '"tag_name": "
 # # remove build env
 # docker buildx rm $BUILD_NAME
 
-docker build --no-cache -t $CONTAINER_NAME . --build-arg CADDY_VERSION
+docker build --no-cache -t $CONTAINER_NAME . --build-arg CADDY_VERSION=${CADDY_VERSION:1}

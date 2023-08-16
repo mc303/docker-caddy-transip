@@ -15,7 +15,7 @@ docker buildx create --platform=${BUILD_PLATFORM} --name ${BUIILDX_REPO}
 docker buildx use ${BUIILDX_REPO}
 
 #build multiplatform docker image
-docker buildx build --platform=${BUILD_PLATFORM} -t ${DOCKER_REPO} --push . --build-arg CADDY_VERSION
+docker buildx build --platform=${BUILD_PLATFORM} -t ${DOCKER_REPO} --push . --build-arg CADDY_VERSION=${CADDY_VERSION:1}
 
 #remove multiplatform environment
 docker buildx rm ${BUIILDX_REPO}
