@@ -2,8 +2,7 @@ ARG CADDY_VERSION
 FROM caddy:${CADDY_VERSION}-builder-alpine AS builder
 
 RUN xcaddy build \
-    --with github.com/lucaslorentz/caddy-docker-proxy/v2 \
-    --with github.com/zjean/transip
+    --with github.com/mc303/transip@master
 
 FROM caddy:${CADDY_VERSION}
 
