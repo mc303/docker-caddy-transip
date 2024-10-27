@@ -7,7 +7,7 @@ CADDY_CURRENT_VERSION=$(docker run --rm quay.io/skopeo/stable list-tags docker:/
 CONTAINER_NAME="ghcr.io/mc303/caddy-transip:latest"
 CONTAINER_NAME_TAG_VERSION="ghcr.io/mc303/caddy-transip:${CADDY_VERSION:1}"
 BUIILDX_REPO='build-caddy-transip'
-BUILD_PLATFORM="linux/amd64,linux/arm/v7,linux/arm64"
+BUILD_PLATFORM="linux/amd64,linux/arm64"
 
 echo ${DOCKER_USER_REPO}
 echo ${DOCKER_API_URL}
