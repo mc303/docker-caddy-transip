@@ -2,7 +2,7 @@ ARG CADDY_VERSION
 FROM caddy:${CADDY_VERSION}-builder-alpine AS builder
 
 RUN xcaddy build \
-    --with github.com/caddy-dns/transip/v2@v2.0.3
+    --with github.com/caddy-dns/transip
 
 FROM caddy:${CADDY_VERSION}
 
