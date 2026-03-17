@@ -29,8 +29,10 @@ jobs:
 
       - name: Get current image version
         id: current
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          CURRENT=$(docker run --rm quay.io/skopeo/stable list-tags docker://ghcr.io/mc303/caddy-transip | jq -r '.Tags[-1]' || echo "none")
+          CURRENT=$(gh api /users/mc303/packages/container/caddy-transip/versions --jq '.[0].metadata.container.tags | .[] | select(. != "latest")' | head -1 || echo "none")
           echo "version=${CURRENT}" >> $GITHUB_OUTPUT
 
       - name: Check if build needed
